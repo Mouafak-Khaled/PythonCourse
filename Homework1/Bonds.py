@@ -1,6 +1,8 @@
 ## Bonds Class
+from Investment import Investment
 
-def class Bonds(Investment):
 
-  def __init__(self, price, symbol):
-    super().__init__(price, symbol)
+class Bonds(Investment):
+
+    def __init__(self, price, symbol):
+        super().__init__(price, symbol)

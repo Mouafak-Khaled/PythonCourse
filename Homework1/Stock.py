@@ -1,4 +1,5 @@
 ## Stock class
+from Investment import Investment
 
 class Stock(Investment):
   
