@@ -1,0 +1,9 @@
+## Stock class
+
+class Stock(Investment):
+  
+  def __init__(self, price, symbol):
+    
+    self.price = price
+    self.symbol = symbol
+

@@ -1,0 +1,9 @@
+Po##main module
+
+import Portfolio
+import Stock
+import MutualFund
+
+portfolio = Portfolio()
+portfolio.addCash(300.50)
+print(portfolio.cash)

@@ -1,0 +1,14 @@
+## Here is a python file for Portfolio class
+
+class Portfolio():
+  
+  
+  def __init__(self):
+   self.cash = 0
+   self.stocks = []
+   self.mutualFunds = []
+
+  def addCash(self, cash):
+    self.cash += cash 
+  print(
+)
