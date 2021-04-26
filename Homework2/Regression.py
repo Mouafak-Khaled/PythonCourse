@@ -4,6 +4,9 @@ import pandas as pd
 
 def linearRegression(X, Y):
 
+    if X.size == 0 or Y.size == 0:
+        raise Exception("X or Y should not be Empty!")
+        return -1, -1, -1, -1
 
     if not isinstance(X, (np.ndarray, list)):
         raise Exception("X must be a numpy array or a normal python array!")
@@ -19,7 +22,7 @@ def linearRegression(X, Y):
 
     #handling the Nan values in my data
     list_wise_delete(X, Y)
-    
+
     N = X.shape[0]
     K = X.shape[1]
 
@@ -31,7 +34,6 @@ def linearRegression(X, Y):
 
     #Calculating the estimate
     X_transpose_inverse = np.linalg.inv(np.matmul(X.transpose(), X))
-    print("(X'X) inverse Shape", X_transpose_inverse.shape)
     beta_estimate = np.matmul(np.matmul(X_transpose_inverse, X.transpose()), Y)
 
     #calculating the errors
@@ -40,7 +42,6 @@ def linearRegression(X, Y):
 
     #calculating the variances
     segma_square = np.matmul(error.transpose(), error)/(N - K - 1)
-    print("segma square shape: ", segma_square.shape)
     Var = np.multiply(segma_square, X_transpose_inverse)
 
     #calculating the credible intervals
