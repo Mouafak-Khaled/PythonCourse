@@ -5,15 +5,11 @@ import pandas as pd
 def linearRegression(X, Y):
 
     if X.size == 0 or Y.size == 0:
-        raise Exception("X or Y should not be Empty!")
+        raise Exception("X and Y should not be Empty!")
         return -1, -1, -1, -1
 
-    if not isinstance(X, (np.ndarray, list)):
-        raise Exception("X must be a numpy array or a normal python array!")
-        return -1, -1, -1, -1
-
-    if not isinstance(Y,  (np.ndarray, list)):
-        raise Exception("Y must be a numpy array or a normal python array!")
+    if not isinstance(X, (np.ndarray, list)) or not isinstance(Y,  (np.ndarray, list)):
+        raise Exception("X and Y must be numpy arrays or python lists!")
         return -1, -1, -1, -1
 
     if X.shape != Y.shape:
