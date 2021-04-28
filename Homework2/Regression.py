@@ -17,7 +17,7 @@ def linearRegression(X, Y):
         return -1, -1, -1, -1
 
     #handling the Nan values in my data
-    list_wise_delete(X, Y)
+    # list_wise_delete(X, Y)
 
     N = X.shape[0]
     K = X.shape[1]
@@ -31,18 +31,18 @@ def linearRegression(X, Y):
     #Calculating the estimate
     X_transpose_inverse = np.linalg.inv(np.matmul(X.transpose(), X))
     beta_estimate = np.matmul(np.matmul(X_transpose_inverse, X.transpose()), Y)
-
     #calculating the errors
     error = Y - np.matmul(X, beta_estimate)
     error = np.array(error)
 
     #calculating the variances
     segma_square = np.matmul(error.transpose(), error)/(N - K - 1)
+
     Var = np.multiply(segma_square, X_transpose_inverse)
 
     #calculating the credible intervals
 
-    STD_ERROR = np.sqrt(Var.diagonal() / N)
+    STD_ERROR = np.sqrt(segma_square / N)
 
     CL = beta_estimate - 1.96 * STD_ERROR
     CR = beta_estimate + 1.96 * STD_ERROR
@@ -53,9 +53,8 @@ def linearRegression(X, Y):
 def list_wise_delete(X, Y):
 
     for i in range(len(X)):
-        if not isinstance(X[i], (float, int)) or not isinstance(Y[i], (float, int)):
+        if not isinstance(X[i], float) or not isinstance(Y[i], float):
             np.delete(X, X[i])
             np.delete(Y, Y[i])
-
 
 
