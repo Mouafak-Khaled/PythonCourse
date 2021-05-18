@@ -104,18 +104,18 @@ def tune_KNN(N, k_values):
     knn = KNeighborsClassifier(n_neighbors=k)
     # run cross validation for a given kNN setup
     # I have setup n_jobs=-1 to use all cpus in my env.
-    scores = cross_val_score(knn, X_train_r, Y_train, cv=10, scoring='accuracy', n_jobs=-1)
+    scores = cross_val_score(knn, X_train, Y_train, cv=10, scoring='accuracy', n_jobs=-1)
     accuracies.append(scores.mean())
   return accuracies
 
 
-k_values = [i for i in range(1, 1000)]
+k_values = [i for i in range(1, 100)]
 accuracies = tune_KNN(N, k_values)
 print(accuracies)
 
 model = KNeighborsClassifier(n_neighbors= np.argmax(accuracies))
-model.fit(X_train_r, Y_train)
-y_model = model.predict(X_test_r)
+model.fit(X_train, Y_train)
+y_model = model.predict(X_test)
 Score = accuracy_score(Y_test, y_model)
 print(Score)
 
